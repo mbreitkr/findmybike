@@ -1,25 +1,15 @@
-import {
-  Component,
-  effect,
-  inject,
-  input,
-  OnInit,
-  output,
-} from "@angular/core";
+import { Component, effect, input, OnInit, output } from "@angular/core";
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
-import { toSignal } from "@angular/core/rxjs-interop";
 
-import { BikesApiService } from "../../services/bikes-api.service";
 import { BikeSearchFormValues } from "../../interfaces/bike-search-form.model";
 
 interface BikeSearchForm {
   city: FormControl<string>;
-  color: FormControl<string>;
 }
 
 @Component({
@@ -31,26 +21,19 @@ interface BikeSearchForm {
 export class BikeSearchInputComponent implements OnInit {
   isLoading = input(false);
   lastSearchedCity = input("");
-  lastSearchedColor = input("");
   searchSubmit = output<BikeSearchFormValues>();
-
-  private bikeApi = inject(BikesApiService);
 
   searchForm = new FormGroup<BikeSearchForm>({
     city: new FormControl("", {
       validators: Validators.required,
       nonNullable: true,
     }),
-    color: new FormControl("", { nonNullable: true }),
   });
-
-  colors = toSignal(this.bikeApi.getBikeColors(), { initialValue: [] });
 
   ngOnInit(): void {
     // Form rehydration
     this.searchForm.patchValue({
       city: this.lastSearchedCity() || "",
-      color: this.lastSearchedColor() || "",
     });
   }
 
@@ -65,16 +48,10 @@ export class BikeSearchInputComponent implements OnInit {
     });
   }
 
-  get colorFormControl(): FormControl<string> {
-    return this.searchForm.get("color") as FormControl<string>;
-  }
-
   onSubmit(): void {
     const formValues = this.searchForm.getRawValue();
-    if (this.searchForm.valid) this.searchSubmit.emit(formValues);
-  }
-
-  handleColorReset(): void {
-    this.colorFormControl.reset("");
+    // TODO: Clean up logic once bike color filter is added back in
+    if (this.searchForm.valid)
+      this.searchSubmit.emit({ city: formValues.city, color: "" });
   }
 }
