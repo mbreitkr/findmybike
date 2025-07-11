@@ -1,0 +1,54 @@
+<div class="search-results">
+  @if (isLoading()) {
+    <div class="spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
+  }
+  @if (isError()) {
+    <div class="api-error">
+      <h2>
+        Error encountered when loading results. Check the console for more
+        details
+      </h2>
+    </div>
+  }
+  @if (isSearchResultsEmpty()) {
+    <div class="no-results">
+      <h2>No results returned</h2>
+    </div>
+  }
+  @if (
+    !isLoading() &&
+    !isError() &&
+    !isSearchResultsEmpty() &&
+    bikeSearchResults().length > 0
+  ) {
+    <div class="results-content">
+      <div class="results-grid">
+        @for (
+          bikeSearchResult of bikeSearchResults();
+          track bikeSearchResult.id
+        ) {
+          <app-bike-search-result-card
+            [bikeSearchResult]="bikeSearchResult"
+            [lastSearchedCity]="lastSearchedCity()"
+            [lastSearchedColor]="lastSearchedColor()"
+            [currentPageIndex]="currentPageIndex()"
+          />
+        }
+      </div>
+      <div class="pagination-container">
+        <mat-paginator
+          class="pagination"
+          [length]="totalResults()"
+          [pageIndex]="currentPageIndex()"
+          [pageSize]="pageSize()"
+          [disabled]="isLoading()"
+          [showFirstLastButtons]="true"
+          (page)="handlePageEvent($event)"
+          aria-label="Select page"
+        ></mat-paginator>
+      </div>
+    </div>
+  }
+</div>

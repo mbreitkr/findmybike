@@ -1,0 +1,194 @@
+@use "styles/variables" as *;
+
+:host {
+  .result-card {
+    height: 100%;
+    background-color: #fff;
+    border-radius: 1.5rem;
+    display: grid;
+    grid-template-columns: 15.625rem 1fr;
+    padding: 1.5rem;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+
+    @media (min-width: 1000px) and (max-width: 1440px) {
+      grid-template-columns: 18.75rem 25rem;
+    }
+
+    @media (max-width: 1000px) {
+      grid-template-columns: 15.625rem 21.875rem;
+    }
+
+    @media (max-width: 896px) {
+      grid-template-columns: 12.5rem 1fr;
+    }
+
+    @media (max-width: 680px) {
+      grid-template-columns: 22.5rem;
+      padding: 3rem 1.5rem;
+      justify-items: center;
+      row-gap: 3rem;
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 15.625rem;
+      padding: 3rem 1.5rem;
+      justify-items: center;
+      row-gap: 3rem;
+    }
+  }
+
+  .img-container {
+    width: 250px;
+    height: 250px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    @media (min-width: 1000px) and (max-width: 1440px) {
+      width: 300px;
+      height: 300px;
+    }
+
+    @media (max-width: 896px) {
+      width: 200px;
+      height: 200px;
+    }
+
+    @media (max-width: 680px) {
+      width: 300px;
+      height: 300px;
+
+      img {
+        border-radius: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      width: 250px;
+      height: 250px;
+    }
+  }
+
+  .result-box {
+    padding-top: 0.25rem;
+
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+
+      @media (min-width: 1000px) and (max-width: 1440px) {
+        font-size: 1.5rem;
+        margin-bottom: 1.75rem;
+      }
+
+      @media (max-width: 680px) {
+        font-size: 1.5rem;
+        margin-bottom: 1.75rem;
+      }
+    }
+
+    .result-details {
+      list-style: none;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+
+        .detail-label {
+          font-weight: bold;
+          flex: 0 0 7.5rem;
+        }
+        .detail-value {
+          flex: 1;
+        }
+
+        .truncate {
+          width: 13.125rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        @media (min-width: 1000px) and (max-width: 1440px) {
+          font-size: 1.125rem;
+          gap: 1.5rem;
+          margin-bottom: 1.25rem;
+        }
+
+        @media (max-width: 680px) {
+          font-size: 1.125rem;
+          gap: 1.5rem;
+          margin-bottom: 1.25rem;
+        }
+
+        @media (max-width: 480px) {
+          flex-direction: column;
+          gap: 0.5rem;
+
+          .detail-label {
+            flex: auto;
+          }
+        }
+      }
+
+      li:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @media (max-width: 680px) {
+      padding: 0 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      padding: 0 1.5rem;
+    }
+  }
+
+  .link-container {
+    grid-column: 2;
+    padding-right: 1.5rem;
+
+    .link-more-details {
+      display: flex;
+      background: none;
+      height: 3rem;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      border-radius: 3rem;
+      border: 2px solid $primary-color;
+
+      .link-text {
+        color: $primary-color;
+        font-size: 1.125rem;
+      }
+
+      .link-icon {
+        fill: $primary-color;
+      }
+    }
+
+    // TODO: Add hover/click styling
+
+    .link-more-details:link,
+    .link-more-details:hover,
+    .link-more-details:visited,
+    .link-more-details:active {
+      text-decoration: none;
+    }
+
+    @media (max-width: 680px) {
+      width: 100%;
+      padding: 0;
+      grid-column: auto;
+    }
+  }
+}

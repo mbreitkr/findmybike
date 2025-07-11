@@ -1,0 +1,37 @@
+:host {
+  .app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .main {
+      overflow: auto;
+      flex: 1;
+
+      .container {
+        width: 100%;
+        max-width: 90rem;
+        margin: 5.75rem auto;
+
+        @media (max-width: 1440px) {
+          max-width: 70rem;
+        }
+
+        @media (max-width: 1200px) {
+          max-width: 60rem;
+        }
+
+        @media (max-width: 1000px) {
+          max-width: 50rem;
+        }
+
+        @media (max-width: 896px) {
+          max-width: 40rem;
+          margin: 4rem auto;
+        }
+      }
+    }
+  }
+}

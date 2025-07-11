@@ -1,0 +1,14 @@
+@use "styles/variables" as *;
+
+:host {
+  .page-header {
+    padding: 0 1.5rem;
+    background-color: $primary-color;
+  }
+
+  .logo {
+    height: 6.25rem;
+    width: auto;
+    margin: -1.25rem 0 -1.75rem;
+  }
+}

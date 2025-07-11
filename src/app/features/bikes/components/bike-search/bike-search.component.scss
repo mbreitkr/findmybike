@@ -1,0 +1,39 @@
+:host {
+  .bike-search-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+
+    @media (max-width: 1000px) {
+      padding: 0 3rem;
+    }
+
+    header {
+      width: 100%;
+      max-width: 50rem;
+
+      h1,
+      p {
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.75rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+    }
+
+    app-bike-search-input {
+      width: 100%;
+      max-width: 31.25rem;
+    }
+  }
+}

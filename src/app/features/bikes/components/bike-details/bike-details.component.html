@@ -1,0 +1,88 @@
+<div class="details">
+  @if (isLoading()) {
+    <mat-spinner class="spinner"></mat-spinner>
+  }
+  @if (!isLoading()) {
+    <app-back-button
+      [routeLink]="backButtonUrl"
+      [queryParams]="queryParams()"
+    />
+  }
+  @if (isError()) {
+    <h2>
+      Error encountered when loading results. Check the console for more details
+    </h2>
+  }
+  @if (bikeDetails()) {
+    <div class="details-content">
+      <div class="img-container">
+        <img [src]="bikeImage" alt="{{ bikeDetails()?.title }}" />
+      </div>
+      <section class="details-summary">
+        <h1>{{ bikeDetails()?.title }}</h1>
+        <ul class="details-summary-list">
+          <li>
+            <p class="detail-label">Status</p>
+            <p class="detail-value">{{ bikeDetails()?.status | titlecase }}</p>
+          </li>
+          <li>
+            <p class="detail-label">Serial #</p>
+            <p class="detail-value">{{ serialNumber }}</p>
+          </li>
+          <li>
+            <p class="detail-label">Manufacturer</p>
+            <p class="detail-value">{{ bikeDetails()?.manufacturer_name }}</p>
+          </li>
+          <li>
+            <p class="detail-label">Model</p>
+            <p class="detail-value">{{ frameModel }}</p>
+          </li>
+          <li>
+            <p class="detail-label">Last Known Location</p>
+            <p class="detail-value">
+              {{ lastKnownLocation }}
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section class="details-extended">
+        <section class="details-extended-section">
+          <h2>Description</h2>
+          <p>{{ description }}</p>
+        </section>
+        <section class="details-extended-section">
+          <h2>Specifications</h2>
+          <div class="detail-items-grid">
+            <div class="detail-item">
+              <p class="detail-label">Type of Cycle</p>
+              <p class="detail-value">{{ typeOfCycle }}</p>
+            </div>
+            <div class="detail-item">
+              <p class="detail-label">Frame Size</p>
+              <p class="detail-value">{{ frameSize }}</p>
+            </div>
+            <div class="detail-item">
+              <p class="detail-label">Frame Material</p>
+              <p class="detail-value">{{ frameMaterial }}</p>
+            </div>
+          </div>
+        </section>
+        <section class="details-extended-section">
+          <h2>Location Details</h2>
+          <div class="detail-items-grid">
+            <div class="detail-item">
+              <p class="detail-label">Location Stolen</p>
+              <p>{{ stolenLocation }}</p>
+            </div>
+            <div class="detail-item">
+              <p class="detail-label">Location Found</p>
+              <p class="detail-value">
+                {{ foundLocation }}
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+  }
+</div>

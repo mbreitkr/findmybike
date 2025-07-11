@@ -1,0 +1,56 @@
+<figure class="result-card">
+  <div class="img-container">
+    <img [src]="bikeImage" [alt]="bikeSearchResult().title" />
+  </div>
+  <div class="result-box">
+    <h2>{{ bikeSearchResult().title }}</h2>
+    <ul class="result-details">
+      <li>
+        <p class="detail-label">Status</p>
+        <p class="detail-value" data-testid="status-value">
+          {{ bikeSearchResult().status | titlecase }}
+        </p>
+      </li>
+      <li>
+        <p class="detail-label">Serial #</p>
+        <p class="detail-value truncate" data-testid="serial-value">
+          {{ serialNumber }}
+        </p>
+      </li>
+      <li>
+        <p class="detail-label">Manufacturer</p>
+        <p class="detail-value" data-testid="manufacturer-value">
+          {{ bikeSearchResult().manufacturer_name }}
+        </p>
+      </li>
+      <li>
+        <p class="detail-label">Last Known Location</p>
+        <p class="detail-value" data-testid="last-location-value">
+          {{ lastKnownLocation }}
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div class="link-container">
+    <a
+      class="link-more-details"
+      [routerLink]="['/details', bikeSearchResult().id]"
+      [queryParams]="detailQueryParams()"
+      data-testid="details-link"
+    >
+      <span class="link-text">More details</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="#000000"
+        viewBox="0 0 256 256"
+        class="link-icon"
+      >
+        <path
+          d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"
+        ></path>
+      </svg>
+    </a>
+  </div>
+</figure>

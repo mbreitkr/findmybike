@@ -1,0 +1,67 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "styles/variables" as *;
+@use "@angular/material" as mat;
+
+:root {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Inter", "Helvetica Neue", sans-serif;
+    color: $text-color;
+    line-height: 1;
+  }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    padding-right: 2rem;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' viewBox='0 0 12 7' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23333' stroke-width='2' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1rem;
+    cursor: pointer;
+  }
+
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    cursor: default;
+    background-color: light-dark(
+      rgba(239, 239, 239, 0.3),
+      rgba(59, 59, 59, 0.3)
+    );
+    color: light-dark(rgb(84, 84, 84), rgb(170, 170, 170));
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-family: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  @include mat.progress-spinner-overrides(
+    (
+      active-indicator-color: $primary-color,
+    )
+  );
+
+  @include mat.paginator-overrides(
+    (
+      container-text-color: $text-color,
+      container-text-size: 1.125rem,
+      enabled-icon-color: $primary-color,
+    )
+  );
+}

@@ -1,0 +1,11 @@
+:host {
+  .details-page {
+    position: relative;
+
+    .back-btn-container {
+      position: absolute;
+      top: -4.5rem;
+      left: 0;
+    }
+  }
+}
