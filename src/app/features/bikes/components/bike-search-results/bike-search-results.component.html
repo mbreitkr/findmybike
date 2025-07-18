@@ -5,7 +5,7 @@
     </div>
   }
   @if (isError()) {
-    <div class="api-error">
+    <div class="api-error" data-testid="bike-search-results-error">
       <h2>
         Error encountered when loading results. Check the console for more
         details
@@ -13,7 +13,7 @@
     </div>
   }
   @if (isSearchResultsEmpty()) {
-    <div class="no-results">
+    <div class="no-results" data-testid="bike-search-no-results-message">
       <h2>No results returned</h2>
     </div>
   }
@@ -23,7 +23,7 @@
     !isSearchResultsEmpty() &&
     bikeSearchResults().length > 0
   ) {
-    <div class="results-content">
+    <div class="results-content" data-testid="bike-search-results">
       <div class="results-grid">
         @for (
           bikeSearchResult of bikeSearchResults();

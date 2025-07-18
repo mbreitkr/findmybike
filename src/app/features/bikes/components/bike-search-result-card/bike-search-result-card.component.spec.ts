@@ -89,7 +89,9 @@ describe("BikeSearchResultCardComponent", () => {
     fixture.detectChanges();
 
     // ASSERTION
-    const detailsLinkEl = debugEl.query(By.css("[data-testid='details-link']"));
+    const detailsLinkEl = debugEl.query(
+      By.css("[data-testid='bike-search-result-details-link']"),
+    );
     expect(detailsLinkEl.attributes["href"]?.split("?")[0]).toBe(
       detailsPagePath,
     );
@@ -109,7 +111,9 @@ describe("BikeSearchResultCardComponent", () => {
     fixture.detectChanges();
 
     // ASSERTION
-    const detailsLinkEl = debugEl.query(By.css("[data-testid='details-link']"));
+    const detailsLinkEl = debugEl.query(
+      By.css("[data-testid='bike-search-result-details-link']"),
+    );
     const routerLinkInstance = detailsLinkEl.injector.get(RouterLink);
     expect(routerLinkInstance.queryParams).toEqual(queryParams);
   });
