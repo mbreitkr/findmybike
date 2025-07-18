@@ -1,4 +1,4 @@
-<figure class="result-card">
+<figure class="result-card" data-testid="bike-search-result-card">
   <div class="img-container">
     <img [src]="bikeImage" [alt]="bikeSearchResult().title" />
   </div>
@@ -36,7 +36,7 @@
       class="link-more-details"
       [routerLink]="['/details', bikeSearchResult().id]"
       [queryParams]="detailQueryParams()"
-      data-testid="details-link"
+      data-testid="bike-search-result-details-link"
     >
       <span class="link-text">More details</span>
       <svg

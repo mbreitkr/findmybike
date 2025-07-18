@@ -14,12 +14,16 @@
     </h2>
   }
   @if (bikeDetails()) {
-    <div class="details-content">
+    <div class="details-content" data-testid="bike-details">
       <div class="img-container">
-        <img [src]="bikeImage" alt="{{ bikeDetails()?.title }}" />
+        <img
+          [src]="bikeImage"
+          alt="{{ bikeDetails()?.title }}"
+          data-testid="bike-details-image"
+        />
       </div>
       <section class="details-summary">
-        <h1>{{ bikeDetails()?.title }}</h1>
+        <h1 data-testid="bike-details-title">{{ bikeDetails()?.title }}</h1>
         <ul class="details-summary-list">
           <li>
             <p class="detail-label">Status</p>
@@ -48,7 +52,7 @@
       <section class="details-extended">
         <section class="details-extended-section">
           <h2>Description</h2>
-          <p>{{ description }}</p>
+          <p data-testid="bike-details-description">{{ description }}</p>
         </section>
         <section class="details-extended-section">
           <h2>Specifications</h2>
